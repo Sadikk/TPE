@@ -71,4 +71,23 @@ namespace TravelingSalesmanProblem.Engine
         }
         #endregion
     }
+
+
+
+    public class PathSorter : Comparer<Path>
+    {
+        // Compares path by Distance
+        public override int Compare(Path x, Path y)
+        {
+            if (x.Distance().CompareTo(y.Distance()) != 0)
+            {
+                return x.Distance().CompareTo(y.Distance());
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+    }
 }

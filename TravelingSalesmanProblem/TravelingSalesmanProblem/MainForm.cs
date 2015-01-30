@@ -15,5 +15,13 @@ namespace TravelingSalesmanProblem
         {
             InitializeComponent();
         }
+
+        public MainForm GetInstance()
+        {
+            if (this != null)
+                return this;
+            else
+                return new MainForm();
+        }
     }
 }

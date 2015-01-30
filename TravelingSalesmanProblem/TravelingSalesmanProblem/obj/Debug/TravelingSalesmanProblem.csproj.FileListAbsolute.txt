@@ -1,1 +1,2 @@
 F:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
+C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
