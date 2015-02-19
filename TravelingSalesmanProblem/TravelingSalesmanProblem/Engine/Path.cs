@@ -12,14 +12,14 @@ namespace TravelingSalesmanProblem.Engine
 
         #region Fields
         public List<Point> Locations; /* List of the genes/points */
-        public readonly Point StartingPoint
+        public Point StartingPoint
         {
             get { return Locations[0]; }
         }
         #endregion
 
         #region Constructors
-        Path(List<Point> Lp)
+        public Path(List<Point> Lp)
         {
             this.Locations = Lp;
         }

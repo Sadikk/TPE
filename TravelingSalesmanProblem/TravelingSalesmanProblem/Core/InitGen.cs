@@ -52,7 +52,20 @@ namespace TravelingSalesmanProblem.Core
         private static bool CheckPath(List<Point> initial, Path p)
         {
             /* Check if the path is correct. (Only one usage per point, all points used, etc...) */
+            if (p.Locations[0] != initial[0])
+                return false;
+            else if (p.Locations[p.Locations.Count - 1] != initial[initial.Count - 1])
+                return false;
 
+            foreach (Point point in p.Locations)
+            {
+                if (p.Locations.Count(x => x == point) > 1)
+                    return false;
+            }
+            if (initial.Count != p.Locations.Count)
+                return false;
+
+            return true;
             /* à compléter...*/
         }
         #endregion

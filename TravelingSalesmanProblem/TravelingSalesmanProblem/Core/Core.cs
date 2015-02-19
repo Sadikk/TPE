@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TravelingSalesmanProblem.Engine;
+using TravelingSalesmanProblem.Interface;
 
 namespace TravelingSalesmanProblem.Core
 {
@@ -11,20 +13,48 @@ namespace TravelingSalesmanProblem.Core
     {
         #region Fields
         List<Path> Listpath;
+        MainForm form;
+        public bool running = false;
         #endregion
 
         #region Constructors
-        public Core(List<Path> Lp)
+        public Core(List<Path> Lp, MainForm main)
         {
             this.Listpath = Lp;
+            form = main;
         }
         #endregion
 
         #region Public Methods
-
+        public void Init()
+        {
+            running = true;
+            while (running)
+            {
+                Do();
+                Application.DoEvents();
+            }
+                
+        }
+        
+        public void Stop()
+        {
+            running = false;
+        }
         #endregion
 
         #region Private Methods
+
+        private void Do()
+        {
+            SetBestDistance(BestDistance());
+            List<Path> lp = BestOne(Listpath, 10); /* Get the actual ten bests path */
+            List<Path> Childs = DoCrossOver(lp);
+            Listpath.RemoveRange(0, 9);
+            Mutate(Listpath);
+            Listpath.AddRange(Childs);
+            
+        }
         private List<Path> BestOne(List<Path> lp, int howmany)
         {
             /* Return the best chromosomes */
@@ -66,6 +96,36 @@ namespace TravelingSalesmanProblem.Core
             }
 
             return result;
+        }
+
+        private List<Path> Mutate(List<Path> lp)
+        {
+            foreach (Path p in lp)
+            {
+                p.Mute();
+            }
+            return lp;
+        }
+
+        private int BestDistance()
+        {
+            /* Get the best best distance between all the path */
+            int temp = 0;
+
+            foreach (Path p in Listpath)
+            {
+                int t = p.Distance();
+                if (t < temp || temp == 0)
+                    temp = p.Distance();
+            }
+            return temp;
+        }
+
+        private void SetBestDistance(int dist)
+        {
+            /* Display the best actual distance */
+            if (Convert.ToInt32(form.label1.Text) > dist | Convert.ToInt32(form.label1.Text) == 0)
+                form.label1.Text = dist.ToString();
         }
 
         private Path Breed(Path father, Path mother)
