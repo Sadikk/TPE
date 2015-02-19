@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelingSalesmanProblem.Engine
 {
-    class Point
+    public class Point
     {
         /* Class used as a point. Represent a location/gene in the path. */
 

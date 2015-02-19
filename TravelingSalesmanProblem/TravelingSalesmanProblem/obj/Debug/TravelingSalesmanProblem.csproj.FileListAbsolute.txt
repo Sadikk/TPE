@@ -1,2 +1,7 @@
 F:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
+C:\Users\Leon\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
+C:\Users\Leon\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.csprojResolveAssemblyReference.cache
+C:\Users\Leon\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.MainForm.resources
+C:\Users\Leon\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Properties.Resources.resources
+C:\Users\Leon\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.csproj.GenerateResource.Cache

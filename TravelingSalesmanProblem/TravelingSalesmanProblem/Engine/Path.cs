@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelingSalesmanProblem.Engine
 {
-    class Path
+    public class Path
     {
         /* Class representing a path */
 
@@ -19,7 +19,7 @@ namespace TravelingSalesmanProblem.Engine
         #endregion
 
         #region Constructors
-        public Path(List<Point> Lp)
+        Path(List<Point> Lp)
         {
             this.Locations = Lp;
         }
