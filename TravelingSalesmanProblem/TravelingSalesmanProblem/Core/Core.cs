@@ -117,6 +117,15 @@ namespace TravelingSalesmanProblem.Core
         private Tuple<Path, int> BestDistance()
         {
             /* Get the best best distance between all the path */
+            
+            /* Example of status */
+            form.SetStatus("Computation of the best distance");
+            form.SetNewTask(0, Listpath.Count);
+            int i = 0;
+            form.SetProgress(i);
+            /* End example */
+
+
             Tuple<Path, int> temp = new Tuple<Path, int>(null, 0);
 
             foreach (Path p in Listpath)
@@ -126,6 +135,8 @@ namespace TravelingSalesmanProblem.Core
                 {
                     temp = new Tuple<Path, int>(p, p.Distance());
                 }
+                i++;
+                form.SetProgress(i);
                    
             }
             return temp;
