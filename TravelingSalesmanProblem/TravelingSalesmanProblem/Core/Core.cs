@@ -15,6 +15,8 @@ namespace TravelingSalesmanProblem.Core
         List<Path> Listpath;
         MainForm form;
         public bool running = false;
+        private Path current_best;
+        private int size;
         #endregion
 
         #region Constructors
@@ -22,6 +24,7 @@ namespace TravelingSalesmanProblem.Core
         {
             this.Listpath = Lp;
             form = main;
+            size = Lp.Count; /* Set the size. At the end of each turn, the list must have this size in order to always continue the computation */
         }
         #endregion
 
@@ -47,14 +50,18 @@ namespace TravelingSalesmanProblem.Core
 
         private void Do()
         {
-            SetBestDistance(BestDistance());
+            Tuple<Path, int> best = BestDistance();
+            SetBestDistance(best.Item1, best.Item2);
             List<Path> lp = BestOne(Listpath, 10); /* Get the actual ten bests path */
-            List<Path> Childs = DoCrossOver(lp);
+            List<Path> Childs = DoCrossOver(lp);   /* Best paths fucks and do childs */
             Listpath.RemoveRange(0, 9);
-            Mutate(Listpath);
-            Listpath.AddRange(Childs);
-            
+            Mutate(Listpath);                      /* Mutate the paths (without the best) */
+            Listpath.AddRange(Childs);             /* Add the childs */
+            Listpath.AddRange(lp);                 /* Re-add the best one */
+            if (Listpath.Count < size) /* If the list doesn't have enough path */
+                Listpath.AddRange(InitGen.Gen(size - Listpath.Count, Listpath[0].Locations)); /* Add random path to complete */
         }
+
         private List<Path> BestOne(List<Path> lp, int howmany)
         {
             /* Return the best chromosomes */
@@ -107,25 +114,33 @@ namespace TravelingSalesmanProblem.Core
             return lp;
         }
 
-        private int BestDistance()
+        private Tuple<Path, int> BestDistance()
         {
             /* Get the best best distance between all the path */
-            int temp = 0;
+            Tuple<Path, int> temp = new Tuple<Path, int>(null, 0);
 
             foreach (Path p in Listpath)
             {
                 int t = p.Distance();
-                if (t < temp || temp == 0)
-                    temp = p.Distance();
+                if (t < temp.Item2 || temp.Item2 == 0)
+                {
+                    temp = new Tuple<Path, int>(p, p.Distance());
+                }
+                   
             }
             return temp;
         }
 
-        private void SetBestDistance(int dist)
+        private void SetBestDistance( Path p, int dist)
         {
             /* Display the best actual distance */
-            if (Convert.ToInt32(form.label1.Text) > dist | Convert.ToInt32(form.label1.Text) == 0)
-                form.label1.Text = dist.ToString();
+            if (Convert.ToInt32(form.BestDistLb.Text) > dist || form.BestDistLb.Text == "Unknown")
+            {
+                form.BestDistLb.Text = dist.ToString();
+                current_best = p;
+            }
+                
+            
         }
 
         private Path Breed(Path father, Path mother)

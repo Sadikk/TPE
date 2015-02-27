@@ -49,6 +49,17 @@ namespace TravelingSalesmanProblem.Engine
             SwapLocations(r.Next(min,max), r.Next(min,max));
 
         }
+
+        public List<System.Drawing.Point> DrawingPoints()
+        {
+            /* Convert Engine.Point to Drawing.Point List */
+            List<System.Drawing.Point> result = new List<System.Drawing.Point>();
+            foreach  (Point p in Locations)
+            {
+                result.Add(p.DrawingPoint);
+            }
+            return result;
+        }
         #endregion
 
         #region Private Methods

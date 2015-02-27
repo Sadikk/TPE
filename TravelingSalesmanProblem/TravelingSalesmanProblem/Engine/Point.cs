@@ -25,6 +25,13 @@ namespace TravelingSalesmanProblem.Engine
         }
         #endregion
 
+        #region Properties
+        public System.Drawing.Point DrawingPoint
+        {
+            get { return new System.Drawing.Point(this.X, this.Y); } /* Convert this point into Drawing.Point */
+        }
+        #endregion
+
         #region Public Methods
         public void Visit()
         {
