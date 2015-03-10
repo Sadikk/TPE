@@ -15,7 +15,7 @@ namespace TravelingSalesmanProblem.Core
         List<Path> Listpath;
         MainForm form;
         public bool running = false;
-        private Path current_best;
+        public Path current_best;
         private int size;
         #endregion
 
@@ -53,13 +53,17 @@ namespace TravelingSalesmanProblem.Core
             Tuple<Path, int> best = BestDistance();
             SetBestDistance(best.Item1, best.Item2);
             List<Path> lp = BestOne(Listpath, 10); /* Get the actual ten bests path */
+            Wait(100);
             List<Path> Childs = DoCrossOver(lp);   /* Best paths fucks and do childs */
+            Wait(100);
             Listpath.RemoveRange(0, 9);
             Mutate(Listpath);                      /* Mutate the paths (without the best) */
+            Wait(100);
             Listpath.AddRange(Childs);             /* Add the childs */
             Listpath.AddRange(lp);                 /* Re-add the best one */
             if (Listpath.Count < size) /* If the list doesn't have enough path */
                 Listpath.AddRange(InitGen.Gen(size - Listpath.Count, Listpath[0].Locations)); /* Add random path to complete */
+            Wait(100);
         }
 
         private List<Path> BestOne(List<Path> lp, int howmany)
@@ -67,10 +71,16 @@ namespace TravelingSalesmanProblem.Core
             /* Return the best chromosomes */
             List<Path> result = new List<Path>();
 
+            /* Status update */
+            form.SetStatus("Find best path");
+            form.SetNewTask(0, howmany);
+            /* ************* */
+
             lp.Sort(new PathSorter());
             for (int i = 0; i<howmany;i++)
             {
                 result.Add(lp[i]);
+                form.SetProgress(i);
             }
 
             return result;
@@ -79,27 +89,48 @@ namespace TravelingSalesmanProblem.Core
         private List<Path> DoCrossOver(List<Path> lp)
         {
             /* Reproduce chromosomes */
+
+            /* Status update */
+            form.SetStatus("Do crossover between path...");
+            form.SetNewTask(0, lp.Count);
+            int i = 0;
+            /* ************* */
+
+
             List<Path> result = new List<Path>();
             Path temp = null;
             foreach (Path p in lp)
             {         
                 if (temp != null)
+                {
                     result.Add(Breed(p, temp));
+                    i++;
+                    form.SetProgress(i);
+                }              
                 temp = p;
             }
 
             /* Check and correct mistakes */
+
+            /* Status update */
+            form.SetStatus("Correct mistakes in path...");
+            form.SetNewTask(0, result.Count);
+            i = 0;
+            /* ************* */
+
             foreach(Path p in result)
             {
                 foreach (Point point in lp[0].Locations)
                 {
                     if (!p.Locations.Contains(point))
                     {
-                        int i = DoublonIndex(p);
-                        if (i != -1)
-                            p.Locations[i] = point;
+                        int index = DoublonIndex(p);
+                        if (index != -1)
+                            p.Locations[index] = point;
                     }
                 }
+                i++;
+                form.SetProgress(i);
             }
 
             return result;
@@ -107,9 +138,19 @@ namespace TravelingSalesmanProblem.Core
 
         private List<Path> Mutate(List<Path> lp)
         {
+            /* Do a random mutation in all the path */
+
+            /* Status update */
+            form.SetStatus("Mutate path...");
+            form.SetNewTask(0, lp.Count);
+            int i = 0;
+            /* ************* */
+
             foreach (Path p in lp)
             {
                 p.Mute();
+                i++;
+                form.SetProgress(i);
             }
             return lp;
         }
@@ -118,9 +159,9 @@ namespace TravelingSalesmanProblem.Core
         {
             /* Get the best best distance between all the path */
             
-            /* Example of status */
-            form.SetStatus("Computation of the best distance");
-            form.SetNewTask(0, Listpath.Count);
+            /* status update*/
+            form.SetStatus("Computation of the best distance...");
+            form.SetNewTask(0, Listpath.Count +1);
             int i = 0;
             form.SetProgress(i);
             /* End example */
@@ -144,14 +185,25 @@ namespace TravelingSalesmanProblem.Core
 
         private void SetBestDistance( Path p, int dist)
         {
+            form.DrawPath(p);
+            // TODO : Convert this to centimeter -> dist = PixelToCentimeters(dist);
             /* Display the best actual distance */
-            if (Convert.ToInt32(form.BestDistLb.Text) > dist || form.BestDistLb.Text == "Unknown")
+            if (form.BestDistLb.Text == "Unknown" || Convert.ToInt32(form.BestDistLb.Text) > dist)
             {
                 form.BestDistLb.Text = dist.ToString();
                 current_best = p;
+            } 
+        }
+
+        private void Wait(int length)
+        {
+            int i = 0;
+            while (i < length)
+            {
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1);
+                i++;
             }
-                
-            
         }
 
         private Path Breed(Path father, Path mother)
@@ -198,6 +250,8 @@ namespace TravelingSalesmanProblem.Core
             }
             return -1;
         }
+
+        
         #endregion
     }
 }

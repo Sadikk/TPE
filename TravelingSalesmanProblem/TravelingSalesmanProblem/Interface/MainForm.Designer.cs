@@ -30,6 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.monoFlat_ThemeContainer1 = new TravelingSalesmanProblem.Interface.MonoFlat_ThemeContainer();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLb = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.monoFlat_Label3 = new TravelingSalesmanProblem.Interface.MonoFlat_Label();
             this.SizeTrackBar = new TravelingSalesmanProblem.Interface.MonoFlat_TrackBar();
@@ -41,10 +45,7 @@
             this.monoFlat_Label1 = new TravelingSalesmanProblem.Interface.MonoFlat_Label();
             this.StartStopBt = new TravelingSalesmanProblem.Interface.MonoFlat_Toggle();
             this.monoFlat_ControlBox1 = new TravelingSalesmanProblem.Interface.MonoFlat_ControlBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusLb = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.monoFlat_Button1 = new TravelingSalesmanProblem.Interface.MonoFlat_Button();
             this.monoFlat_ThemeContainer1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             // monoFlat_ThemeContainer1
             // 
             this.monoFlat_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.monoFlat_ThemeContainer1.Controls.Add(this.monoFlat_Button1);
             this.monoFlat_ThemeContainer1.Controls.Add(this.statusStrip1);
             this.monoFlat_ThemeContainer1.Controls.Add(this.panel1);
             this.monoFlat_ThemeContainer1.Controls.Add(this.monoFlat_Label3);
@@ -86,6 +88,37 @@
             this.monoFlat_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.monoFlat_ThemeContainer1.TabIndex = 4;
             this.monoFlat_ThemeContainer1.Text = "Traveling Salesman Problem - TPE";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.statusLb,
+            this.statusProgressBar});
+            this.statusStrip1.Location = new System.Drawing.Point(10, 312);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(514, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 17);
+            this.toolStripStatusLabel1.Text = "Current work :";
+            // 
+            // statusLb
+            // 
+            this.statusLb.BackColor = System.Drawing.Color.White;
+            this.statusLb.Name = "statusLb";
+            this.statusLb.Size = new System.Drawing.Size(36, 17);
+            this.statusLb.Text = "None";
+            // 
+            // statusProgressBar
+            // 
+            this.statusProgressBar.Name = "statusProgressBar";
+            this.statusProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // panel1
             // 
@@ -216,36 +249,19 @@
             this.monoFlat_ControlBox1.TabIndex = 2;
             this.monoFlat_ControlBox1.Text = "monoFlat_ControlBox1";
             // 
-            // statusStrip1
+            // monoFlat_Button1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.statusLb,
-            this.statusProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(10, 312);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(514, 22);
-            this.statusStrip1.TabIndex = 13;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(82, 17);
-            this.toolStripStatusLabel1.Text = "Current work :";
-            // 
-            // statusLb
-            // 
-            this.statusLb.BackColor = System.Drawing.Color.White;
-            this.statusLb.Name = "statusLb";
-            this.statusLb.Size = new System.Drawing.Size(36, 17);
-            this.statusLb.Text = "None";
-            // 
-            // statusProgressBar
-            // 
-            this.statusProgressBar.Name = "statusProgressBar";
-            this.statusProgressBar.Size = new System.Drawing.Size(100, 16);
+            this.monoFlat_Button1.BackColor = System.Drawing.Color.Transparent;
+            this.monoFlat_Button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monoFlat_Button1.Image = null;
+            this.monoFlat_Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.monoFlat_Button1.Location = new System.Drawing.Point(307, 254);
+            this.monoFlat_Button1.Name = "monoFlat_Button1";
+            this.monoFlat_Button1.Size = new System.Drawing.Size(199, 24);
+            this.monoFlat_Button1.TabIndex = 14;
+            this.monoFlat_Button1.Text = "Draw actual best path";
+            this.monoFlat_Button1.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.monoFlat_Button1.Click += new System.EventHandler(this.monoFlat_Button1_Click);
             // 
             // MainForm
             // 
@@ -288,6 +304,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel statusLb;
         private System.Windows.Forms.ToolStripProgressBar statusProgressBar;
+        private MonoFlat_Button monoFlat_Button1;
 
     }
 }

@@ -25,7 +25,6 @@ namespace TravelingSalesmanProblem.Interface
         int size;
         #endregion
 
-
         #region Constructors
         public MainForm()
         {
@@ -38,9 +37,14 @@ namespace TravelingSalesmanProblem.Interface
         {
             if (StartStopBt.Toggled)
             {
-                List<Engine.Path> init = InitGen.Gen(size, lp);
-                c = new Core.Core(init, this);
-                c.Init();
+                if (lp.Count > 1) /* Check the number of points */
+                {
+                    List<Engine.Path> init = InitGen.Gen(size, lp);
+                    c = new Core.Core(init, this);
+                    c.Init();
+                }
+                else
+                    MessageBox.Show("Please enter more than 3 points.");
             }
             else
             {
@@ -88,6 +92,24 @@ namespace TravelingSalesmanProblem.Interface
                 }
             }
         }
+
+        private void monoFlat_Button1_Click(object sender, EventArgs e)
+        {
+            /* Draw actual best path button click */
+            if (c.running)
+            {
+               /* if computation is running, stop it before drawing the best path */
+               if (MessageBox.Show("Computation is running ! Stop it and draw best path ?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
+               {
+                   c.Stop();
+                   DrawPath(c.current_best);
+               }
+            }
+            else
+            {
+                DrawPath(c.current_best);
+            }
+        }
         #endregion
 
         #region Public Methods
@@ -119,6 +141,8 @@ namespace TravelingSalesmanProblem.Interface
             statusProgressBar.Maximum = max;
         }
         #endregion
+
+        
 
 
         
