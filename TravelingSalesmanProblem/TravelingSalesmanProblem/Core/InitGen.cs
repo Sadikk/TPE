@@ -66,7 +66,6 @@ namespace TravelingSalesmanProblem.Core
                 return false;
 
             return true;
-            /* à compléter...*/
         }
         #endregion
     }

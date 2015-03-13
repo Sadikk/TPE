@@ -52,6 +52,14 @@ namespace TravelingSalesmanProblem.Interface
             }
         }
 
+        private void monoFlat_Button2_Click(object sender, EventArgs e)
+        {
+            PerceptronForm f = new PerceptronForm();
+            Perceptron p = new Perceptron(f);
+            f.Show();
+            p.AND();
+        }
+
         private void SizeTrackBar_ValueChanged()
         {
             monoFlat_Label3.Text = "Size : " + SizeTrackBar.Value;
@@ -141,6 +149,8 @@ namespace TravelingSalesmanProblem.Interface
             statusProgressBar.Maximum = max;
         }
         #endregion
+
+       
 
         
 

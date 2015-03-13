@@ -17,3 +17,4 @@ C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanPro
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.csproj.GenerateResource.Cache
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.exe
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.pdb
+C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.PerceptronForm.resources

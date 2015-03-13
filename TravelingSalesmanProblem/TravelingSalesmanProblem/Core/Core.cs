@@ -187,12 +187,20 @@ namespace TravelingSalesmanProblem.Core
         {
             form.DrawPath(p);
             // TODO : Convert this to centimeter -> dist = PixelToCentimeters(dist);
+            dist = PixelToCm(dist);
             /* Display the best actual distance */
             if (form.BestDistLb.Text == "Unknown" || Convert.ToInt32(form.BestDistLb.Text) > dist)
             {
                 form.BestDistLb.Text = dist.ToString();
                 current_best = p;
             } 
+        }
+
+        private int PixelToCm(int pixel)
+        {
+            //int dpi = (int)form.CreateGraphics().DpiX;
+            double mm = (pixel * 25.4) / 96;
+            return (int)(mm /10);
         }
 
         private void Wait(int length)
