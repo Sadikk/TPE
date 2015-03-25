@@ -37,7 +37,7 @@ namespace TravelingSalesmanProblem.Interface
         {
             if (StartStopBt.Toggled)
             {
-                if (lp.Count > 1) /* Check the number of points */
+                if (lp.Count > 3) /* Check the number of points */
                 {
                     List<Engine.Path> init = InitGen.Gen(size, lp);
                     c = new Core.Core(init, this);
@@ -48,16 +48,15 @@ namespace TravelingSalesmanProblem.Interface
             }
             else
             {
-                c.Stop();
+                if (c != null) 
+                    c.Stop();
             }
         }
 
         private void monoFlat_Button2_Click(object sender, EventArgs e)
         {
             PerceptronForm f = new PerceptronForm();
-            Perceptron p = new Perceptron(f);
             f.Show();
-            p.AND();
         }
 
         private void SizeTrackBar_ValueChanged()
@@ -104,7 +103,7 @@ namespace TravelingSalesmanProblem.Interface
         private void monoFlat_Button1_Click(object sender, EventArgs e)
         {
             /* Draw actual best path button click */
-            if (c.running)
+            if (c != null && c.running)
             {
                /* if computation is running, stop it before drawing the best path */
                if (MessageBox.Show("Computation is running ! Stop it and draw best path ?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -113,7 +112,7 @@ namespace TravelingSalesmanProblem.Interface
                    DrawPath(c.current_best);
                }
             }
-            else
+            else if (c != null)
             {
                 DrawPath(c.current_best);
             }
@@ -124,7 +123,6 @@ namespace TravelingSalesmanProblem.Interface
         public void DrawPath(Path p)
         {
             /* Draw a path on the panel */
-            // TODO : Use it at each step of the Core process
             isDrawing = true;
             Points = p.DrawingPoints();
             panel1.Invalidate();
@@ -132,19 +130,16 @@ namespace TravelingSalesmanProblem.Interface
 
         public void SetStatus(string status)
         {
-            // TODO : Use it at each step of the Core process.
             statusLb.Text = status;
         }
 
         public void SetProgress(int value)
         {
-            // TODO : Use it at each step of the Core process
             statusProgressBar.Value = value;
         }
 
         public void SetNewTask(int min, int max)
         {
-            // TODO : Use it at each step of the Core process
             statusProgressBar.Minimum = min;
             statusProgressBar.Maximum = max;
         }

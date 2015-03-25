@@ -18,3 +18,15 @@ C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanPro
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.exe
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.pdb
 C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.PerceptronForm.resources
+C:\Users\Valentin\Source\Repos\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.SplashScreen.resources
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe.config
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.exe
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.pdb
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.csprojResolveAssemblyReference.cache
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.MainForm.resources
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.PerceptronForm.resources
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Interface.SplashScreen.resources
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.Properties.Resources.resources
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\obj\Debug\TravelingSalesmanProblem.csproj.GenerateResource.Cache
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.exe
+D:\Autres\TPE\TravelingSalesmanProblem\TravelingSalesmanProblem\bin\Debug\TravelingSalesmanProblem.pdb

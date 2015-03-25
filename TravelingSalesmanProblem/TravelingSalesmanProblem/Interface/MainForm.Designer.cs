@@ -80,7 +80,7 @@
             this.monoFlat_ThemeContainer1.Sizable = true;
             this.monoFlat_ThemeContainer1.Size = new System.Drawing.Size(991, 587);
             this.monoFlat_ThemeContainer1.SmartBounds = true;
-            this.monoFlat_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.monoFlat_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.monoFlat_ThemeContainer1.TabIndex = 4;
             this.monoFlat_ThemeContainer1.Text = "Traveling Salesman Problem - TPE";
             // 
@@ -130,6 +130,7 @@
             this.monoFlat_Button1.TabIndex = 24;
             this.monoFlat_Button1.Text = "Draw actual best path";
             this.monoFlat_Button1.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.monoFlat_Button1.Click += new System.EventHandler(this.monoFlat_Button1_Click);
             // 
             // monoFlat_Label3
             // 
@@ -157,6 +158,7 @@
             this.SizeTrackBar.Value = 0;
             this.SizeTrackBar.ValueDivison = TravelingSalesmanProblem.Interface.MonoFlat_TrackBar.ValueDivisor.By1;
             this.SizeTrackBar.ValueToSet = 0F;
+            this.SizeTrackBar.ValueChanged += new MonoFlat_TrackBar.ValueChangedEventHandler(this.SizeTrackBar_ValueChanged);
             // 
             // BestDistLb
             // 
@@ -235,6 +237,7 @@
             this.StartStopBt.Text = "StartStopBt";
             this.StartStopBt.Toggled = false;
             this.StartStopBt.Type = TravelingSalesmanProblem.Interface.MonoFlat_Toggle._Type.CheckMark;
+            this.StartStopBt.ToggledChanged += new MonoFlat_Toggle.ToggledChangedEventHandler(this.StartStopBt_ToggledChanged);
             // 
             // statusStrip1
             // 
@@ -302,9 +305,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Traveling Salesman Problem - TPE";
             this.TransparencyKey = System.Drawing.Color.Violet;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.monoFlat_ThemeContainer1.ResumeLayout(false);
             this.monoFlat_ThemeContainer1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

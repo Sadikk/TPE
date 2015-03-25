@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TravelingSalesmanProblem.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +64,12 @@
     <Compile Include="Interface\PerceptronForm.Designer.cs">
       <DependentUpon>PerceptronForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\Theme.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -71,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface\PerceptronForm.resx">
       <DependentUpon>PerceptronForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

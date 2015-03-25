@@ -7,15 +7,15 @@ using TravelingSalesmanProblem.Interface;
 
 namespace TravelingSalesmanProblem.Engine
 {
-    class Perceptron
+    public class Perceptron
     {
         #region Fields
         private PerceptronForm form;
         double threshold = 1;
         double learningRate = 0.1;
         // Init weights
-        double[] weights = {0.0, 0.0};
-        
+        double[] weights = { 0.0, 0.0 };
+
         // AND function Training data
         int[][][] ANDtrainingData = new int[4][][] {
             new int[][] { new int[] {0,0} , new int[] {0}},
@@ -23,8 +23,15 @@ namespace TravelingSalesmanProblem.Engine
             new int[][] { new int[] {1,0} , new int[] {0}},
             new int[][] { new int[] {1,1} , new int[] {1}}
         };
-        #endregion
 
+        // OR function Training data
+        int[][][] ORtrainingData = new int[4][][] {
+            new int[][] { new int[] {0,0} , new int[] {0}},
+            new int[][] { new int[] {0,1} , new int[] {1}},
+            new int[][] { new int[] {1,0} , new int[] {1}},
+            new int[][] { new int[] {1,1} , new int[] {1}}
+        };
+        #endregion
 
         #region Constructors
         public Perceptron(PerceptronForm f)
@@ -36,57 +43,110 @@ namespace TravelingSalesmanProblem.Engine
         #region Public Methods
         public void AND()
         {
-            // Start training loop
-            while (true)
+            int errorCount = 0;
+            // Loop over training data
+            for (int i = 0; i < ANDtrainingData.Length; i++)
             {
-                int errorCount = 0;
-                // Loop over training data
-                for (int i = 0; i < ANDtrainingData.Length; i++)
+                Log("Starting weights: " + PrintWeights(weights), LogType.STATUS);
+                // Calculate weighted input
+                double weightedSum = 0;
+                for (int ii = 0; ii < ANDtrainingData[i][0].Length; ii++)
                 {
-                    Log("Starting weights: " + PrintWeights(weights), LogType.STATUS);
-                    // Calculate weighted input
-                    double weightedSum = 0;
-                    for (int ii = 0; ii < ANDtrainingData[i][0].Length; ii++)
-                    {
-                        weightedSum += ANDtrainingData[i][0][ii] * weights[ii];
-                    }
-
-                    // Calculate output
-                    int output = 0;
-                    if (threshold <= weightedSum)
-                    {
-                        output = 1;
-                    }
-
-                    Log("Target output: " + ANDtrainingData[i][1][0] + ", "
-                            + "Actual Output: " + output, LogType.STATUS);
-
-                    // Calculate error
-                    int error = ANDtrainingData[i][1][0] - output;
-
-                    // Increase error count for incorrect output
-                    if (error != 0)
-                    {
-                        errorCount++;
-                    }
-
-                    // Update weights
-                    for (int ii = 0; ii < ANDtrainingData[i][0].Length; ii++)
-                    {
-                        weights[ii] += learningRate * error * ANDtrainingData[i][0][ii];
-                    }
-
-                    Log("New weights: " + PrintWeights(weights) + "\n", LogType.RESULT);
+                    weightedSum += ANDtrainingData[i][0][ii] * weights[ii];
                 }
 
-                // If there are no errors, stop
-                if (errorCount == 0)
+                // Calculate output
+                int output = 0;
+                if (threshold <= weightedSum)
                 {
-                    Log("Final weights: " + PrintWeights(weights), LogType.RESULT);
-                    Log("Learning finished !", LogType.STATUS);
-                    return;
+                    output = 1;
                 }
+
+                Log("Target output: " + ANDtrainingData[i][1][0] + ", "
+                        + "Actual Output: " + output, LogType.STATUS);
+
+                // Calculate error
+                int error = ANDtrainingData[i][1][0] - output;
+
+                // Increase error count for incorrect output
+                if (error != 0)
+                {
+                    errorCount++;
+                }
+
+                // Update weights
+                for (int ii = 0; ii < ANDtrainingData[i][0].Length; ii++)
+                {
+                    weights[ii] += learningRate * error * ANDtrainingData[i][0][ii];
+                }
+
+                Log("New weights: " + PrintWeights(weights) + "\n", LogType.RESULT);
             }
+
+            // If there are no errors, stop
+            if (errorCount == 0)
+            {
+                Log("Final weights: " + PrintWeights(weights), LogType.RESULT);
+                Log("Learning finished !", LogType.STATUS);
+                return;
+            }
+
+        }
+
+        public void OR()
+        {
+            int errorCount = 0;
+            // Loop over training data
+            for (int i = 0; i < ORtrainingData.Length; i++)
+            {
+                Log("Starting weights: " + PrintWeights(weights), LogType.STATUS);
+                // Calculate weighted input
+                double weightedSum = 0;
+                for (int ii = 0; ii < ORtrainingData[i][0].Length; ii++)
+                {
+                    weightedSum += ORtrainingData[i][0][ii] * weights[ii];
+                }
+
+                // Calculate output
+                int output = 0;
+                if (threshold <= weightedSum)
+                {
+                    output = 1;
+                }
+
+                Log("Target output: " + ORtrainingData[i][1][0] + ", "
+                        + "Actual Output: " + output, LogType.STATUS);
+
+                // Calculate error
+                int error = ORtrainingData[i][1][0] - output;
+
+                // Increase error count for incorrect output
+                if (error != 0)
+                {
+                    errorCount++;
+                }
+
+                // Update weights
+                for (int ii = 0; ii < ORtrainingData[i][0].Length; ii++)
+                {
+                    weights[ii] += learningRate * error * ORtrainingData[i][0][ii];
+                }
+
+                Log("New weights: " + PrintWeights(weights) + "\n", LogType.RESULT);
+            }
+
+            // If there are no errors, stop
+            if (errorCount == 0)
+            {
+                Log("Final weights: " + PrintWeights(weights), LogType.RESULT);
+                Log("Learning finished !", LogType.STATUS);
+                return;
+            }
+        }
+
+        public void Clear()
+        {
+            weights = new double[] { 0.0, 0.0 };
         }
         #endregion
 
@@ -135,7 +195,6 @@ namespace TravelingSalesmanProblem.Engine
             return result;
         }
         #endregion
-
 
         #region LogType Enum
         private enum LogType

@@ -53,17 +53,17 @@ namespace TravelingSalesmanProblem.Core
             Tuple<Path, int> best = BestDistance();
             SetBestDistance(best.Item1, best.Item2);
             List<Path> lp = BestOne(Listpath, 10); /* Get the actual ten bests path */
-            Wait(100);
+            Wait(10);
             List<Path> Childs = DoCrossOver(lp);   /* Best paths fucks and do childs */
-            Wait(100);
+            Wait(10);
             Listpath.RemoveRange(0, 9);
             Mutate(Listpath);                      /* Mutate the paths (without the best) */
-            Wait(100);
+            Wait(10);
             Listpath.AddRange(Childs);             /* Add the childs */
             Listpath.AddRange(lp);                 /* Re-add the best one */
             if (Listpath.Count < size) /* If the list doesn't have enough path */
                 Listpath.AddRange(InitGen.Gen(size - Listpath.Count, Listpath[0].Locations)); /* Add random path to complete */
-            Wait(100);
+            Wait(10);
         }
 
         private List<Path> BestOne(List<Path> lp, int howmany)
