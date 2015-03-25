@@ -28,7 +28,8 @@ namespace TravelingSalesmanProblem.Interface
         #region Constructors
         public MainForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            size = SizeTrackBar.Value;
         }
         #endregion
 
@@ -144,6 +145,18 @@ namespace TravelingSalesmanProblem.Interface
             statusProgressBar.Maximum = max;
         }
         #endregion
+
+        private void ClearBt_Click(object sender, EventArgs e)
+        {
+            isDrawing = false;
+            if (c != null && c.running)
+            {
+                c.Stop();
+            }
+            lp = new List<Engine.Point>();
+            Points = new List<System.Drawing.Point>();
+            panel1.Invalidate();
+        }
 
        
 
